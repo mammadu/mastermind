@@ -1,0 +1,22 @@
+name: push-to-main-branch
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup python
+        uses: action/setup-python@v3
+        with:
+          python-version: '.tool-versions'
+      - name: install dependencies
+        run: |
+          python -m pip install --upgrade pop
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: test with pytest
+        run: pytest
