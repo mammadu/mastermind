@@ -10,12 +10,13 @@ class Status:
         try:
             response = requests.get(url)
             if response.status_code >= 200 and response.status_code <= 299:
-                return True
+                return_val = True
             else:
-                return False
+                return_val = False
         except Exception as e:
             print(e)
-            return False
+            return_val = False
+        return return_val
 
-    def log_status():
+    def log_status(self,status, logger=csv_logger):
         print()

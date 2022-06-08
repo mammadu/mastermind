@@ -25,5 +25,7 @@ def test_if_site_is_fake_return_false():
     is_up = status.is_up()
     assert is_up == False
 
-def test_log_status_of_site():
-    print()
+def test_log_status_of_site_to_csv():
+    url = 'https://www.random.org/integers/'
+    status = cs.Status(url)
+    status.log_status(status, logger)
