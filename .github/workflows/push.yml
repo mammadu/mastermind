@@ -11,7 +11,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: setup python
-        uses: action/setup-python@v3
+        uses: actions/setup-python@v3
         with:
           python-version: '.tool-versions'
       - name: install dependencies
