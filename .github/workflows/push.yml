@@ -19,7 +19,7 @@ jobs:
           python-version: "${{env.PYTHON_VERSION}}"
       - name: install dependencies
         run: |
-          python -m pip install --upgrade pop
+          python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: test with pytest
         run: pytest
