@@ -2,8 +2,14 @@ import sys
 import pathlib
 
 test_path = pathlib.Path(__file__).resolve().parent
-source_path = test_path.parent.joinpath("src")
-sys.path.insert(0, str(source_path))
+
+path_list = {
+    'source_path': test_path.parent.joinpath("src")
+    , 'log_path': test_path.parent.joinpath("logs")
+}
+
+for value in path_list.values():
+    sys.path.insert(0, str(value))
 
 import check_status as cs
 
@@ -28,4 +34,7 @@ def test_if_site_is_fake_return_false():
 def test_log_status_of_site_to_csv():
     url = 'https://www.random.org/integers/'
     status = cs.Status(url)
-    status.log_status(status, logger)
+    log_file_location = test_path.joinpath("random_api_status.csv")
+    status.log_status(True, logger=cs.CSVLogger(str(log_file_location)))
+    assert log_file_location.is_file() == True
+    log_file_location.unlink()
