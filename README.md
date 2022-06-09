@@ -13,4 +13,8 @@
 - navigate to the root of the repository in your terminal
 - enter ```pip install -r requirements.txt``` in the terminal
 
+## How to test
+
+- After installation, in the terminal, enter ```pytest```
+
 ## How to play
