@@ -30,14 +30,14 @@ class Status:
         try:
             response = requests.get(url)
             if response.status_code >= 200 and response.status_code <= 299:
-                return_val = True
+                status = True
             else:
-                return_val = False
+                status = False
         except Exception as e:
             print(e)
-            return_val = False
-        
-        return return_val
+            status = False
+        self.log_status(status)
+        return status
 
     def log_status(self,status,logger=CSVLogger()):
         logger.log(status, self.url)
