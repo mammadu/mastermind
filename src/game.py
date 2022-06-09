@@ -8,16 +8,16 @@ class Game:
         else:
             self.code = code
         self.feedback = []
-    
+
     def evaluate(self, input):
         evaluator = evaluate.Evaluator()
         feedback = evaluator.evaluate(self.code, input)
         self.feedback.append(feedback)
-    
+
     def latest_feedback(self):
         return self.feedback[len(self.feedback) - 1]
 
-    def generate_code(self):
+    def generate_code(self, min=0, max=7, length=4):
         rand = ri.RandomInterface()
-        code = rand.generate_random_list()
+        code = rand.generate_random_list(min, max, length)
         return code

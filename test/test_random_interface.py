@@ -22,8 +22,3 @@ def test_if_random_site_is_up_use_random_api_wrapper():
 def test_if_random_site_is_down_use_python_random_wrapper():
     interface = ri.RandomInterface('https://www.random.org/fake_path/')
     assert isinstance(interface.wrapper, type(python_random_wrapper.Wrapper()))
-
-def test_generate_random_list_has_default_length_of_4():
-    interface = ri.RandomInterface()
-    list = interface.generate_random_list()
-    assert len(list) == 4

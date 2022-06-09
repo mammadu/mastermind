@@ -9,6 +9,6 @@ class RandomInterface:
             self.wrapper = random_api_wrapper.Wrapper()
         else:
             self.wrapper = python_random_wrapper.Wrapper()
-    
-    def generate_random_list(self, min=0, max=7, length=4):
+
+    def generate_random_list(self, min, max, length):
         return self.wrapper.generate_random_numbers(min, max, length)
