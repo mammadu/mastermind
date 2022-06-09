@@ -7,15 +7,19 @@ class Game:
             self.code = self.generate_code()
         else:
             self.code = code
-        self.feedback = []
+        self.feedback_list = []
 
     def evaluate(self, input):
         evaluator = evaluate.Evaluator()
-        feedback = evaluator.evaluate(self.code, input)
-        self.feedback.append(feedback)
+        output = evaluator.evaluate(self.code, input)
+        feedback = {
+            'input': input
+            , 'output': output
+        }
+        self.feedback_list.append(feedback)
 
     def latest_feedback(self):
-        return self.feedback[len(self.feedback) - 1]
+        return self.feedback_list[len(self.feedback_list) - 1]
 
     def generate_code(self, min=0, max=7, length=4):
         rand = ri.RandomInterface()
