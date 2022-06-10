@@ -26,9 +26,19 @@
 ## Tested on
 
 - KDE Linux Mint 20.3
+- Ubuntu 20.04
 
 ## Todo
 
 - Store displayed messages from Interface class in a central location to allow easy translation to different languages
 - Add more automated testing to Interface class
 - break down main function in Interface class, it's too big
+- Add graphical way to see status of https://www.random.org/integers/
+- Add metrics to save gameplay data
+    - highest score
+    - lifetime player attempts
+    - lifetime wins
+    - lifetime losses
+    - average attempt per game
+- Add new logger class to save status of https://www.random.org/integers/ to a database
+- update github actions file to test on multiple operating systems
