@@ -1,15 +1,26 @@
 from pydoc import plain
 from game import Game
+from os import system, name
 
 class Interface:
     def __init__(self):
         self.game = Game()
+
+    def clear(self):
+        if name == 'nt':
+            _ = system('cls')
+        else:
+            _ = system('clear')
+
     def display_feedback(self):
         try:
-            feedback = self.game.latest_feedback()
-            print(f"input: {feedback['input']} \t feedback: {feedback['output']} \t attempts left: {self.game.attempts_left}")
+            for feedback in self.game.feedback_list:
+            # feedback = self.game.latest_feedback()
+                print(f"input: {feedback['input']} \t feedback: {feedback['output']}")
         except IndexError as e:
             pass
+        print()
+        print(f"attempts left: {self.game.attempts_left}")
 
     def get_user_input(self):
         user_input = input(f"Enter guess, separate numbers with spaces: ")
@@ -33,9 +44,8 @@ Each number can be between {self.game.min} and {self.game.max} inclusive.
 Enter 'quit' to exit out of the game.
 Good Luck!
 """
-        print(welcome_message)
-
         while self.game.player_win == False and self.game.player_lose == False:
+            print(welcome_message)
             self.display_feedback()
             user_input = None
             while user_input == None:
@@ -49,7 +59,19 @@ Good Luck!
                     print(f'You must enter {self.game.length} numbers, separated by spaces')
                     user_input = None
             self.game.evaluate(user_input)
+            self.clear()
         if self.game.player_win == True:
-            print("You win! Congratulations!")
+            print(f"""
+You win! 
+The code was {self.game.code}.
+Congratulations!
+            """
+            )
         elif self.game.player_lose == True:
-            print("You lose... better luck next time!")
+            print(
+                f"""
+You lose...
+The code was {self.game.code}
+Better luck next time!"
+"""
+            )
