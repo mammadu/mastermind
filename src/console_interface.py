@@ -16,6 +16,7 @@ class Interface:
         if user_input.lower() == 'quit':
             user_input = user_input.lower()
         else:
+            print(user_input)
             try:
                 user_input = user_input.split()
                 user_input = list(map(int, user_input))
@@ -47,7 +48,7 @@ Good Luck!
                 elif len(user_input) != self.game.length:
                     print(f'You must enter {self.game.length} numbers, separated by spaces')
                     user_input = None
-                self.game.evaluate(user_input)
+            self.game.evaluate(user_input)
         if self.game.player_win == True:
             print("You win! Congratulations!")
         elif self.game.player_lose == True:
