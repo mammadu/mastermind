@@ -42,3 +42,4 @@
     - average attempt per game
 - Add new logger class to save status of https://www.random.org/integers/ to a database
 - update github actions file to test on multiple operating systems
+- Fix testing so that check_status doesn't record to the log folder during a test
