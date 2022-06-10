@@ -2,9 +2,12 @@ import evaluate
 import random_interface as ri
 
 class Game:
-    def __init__(self, code=None, attempts=10):
+    def __init__(self, code=None, attempts=10, min=0, max=7, length=4):
+        self.min = min
+        self.max = max
+        self.length = length
         if code == None:
-            self.code = self.generate_code()
+            self.code = self.generate_code(self.min, self.max, self.length)
         else:
             self.code = code
         self.feedback_list = []
@@ -26,7 +29,7 @@ class Game:
     def latest_feedback(self):
         return self.feedback_list[len(self.feedback_list) - 1]
 
-    def generate_code(self, min=0, max=7, length=4):
+    def generate_code(self, min, max, length):
         rand = ri.RandomInterface()
         code = rand.generate_random_list(min, max, length)
         return code
