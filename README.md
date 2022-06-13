@@ -43,3 +43,9 @@
 - Add new logger class to save status of https://www.random.org/integers/ to a database
 - update github actions file to test on multiple operating systems
 - Fix testing so that check_status doesn't record to the log folder during a test
+    - use python logging module
+- Optimize checking for key existence in dictionary
+    - using ```if key in dict``` is a loop, just check for ```if dict[key]```
+- When checking site status, just try to get the random number
+    - if it fails, we know the site is down
+    - use try/except???
