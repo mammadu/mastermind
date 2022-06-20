@@ -18,3 +18,18 @@ def test_bad_input_returns_None():
     ci.input = lambda a: "abc"
     input = interface.get_user_input()
     assert input == None
+
+def test_select_easy_difficulty():
+    interface = ci.Interface()
+    ci.input = lambda a: "EASY"
+    assert interface.select_difficulty() == "easy"
+
+def test_select_hard_difficulty():
+    interface = ci.Interface()
+    ci.input = lambda a: "hArD"
+    assert interface.select_difficulty() == "hard"
+
+def test_only_allows_easy_or_hard_difficulty():
+    interface = ci.Interface()
+    ci.input = lambda a: "extreee333mmee "
+    assert interface.select_difficulty() == "please select easy or hard"

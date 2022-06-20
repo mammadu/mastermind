@@ -9,6 +9,18 @@
 - ~~as a user, I should be able to quit the game without causing a crash~~
 - ~~as a developer, I should be able to push modifications to the repository for mastermind and automatically have it tested~~
 - ~~as a developer, I should be able to push modifications to the repository for mastermind and automatically have it linted~~
+- As a user, I should be able to select a difficulty
+    - I should have 3 difficulty settings to choose, consisting of 'easy', 'medium', and 'hard':
+        - easy:
+            - length: 4
+            - min: 0
+            - max: 7
+            - hints: (True) specify/highlight which positions are perfect
+        - hard:
+            - length: 8
+            - min: 0
+            - max: 9
+            - hints: False
 
 ## notes
 

@@ -3,8 +3,19 @@ from game import Game
 from os import system, name
 
 class Interface:
-    def __init__(self):
-        self.game = Game()
+    def init(self):
+        self.difficulty = {
+            'easy': {
+                'min': 0
+                , 'max': 7
+                , 'length': 4
+            }
+            , 'hard': {
+                'min': 0
+                , 'max': 9
+                , 'length': 6
+            }
+        }
 
     def clear(self):
         if name == 'nt':
@@ -35,6 +46,14 @@ class Interface:
                 user_input = None
         return user_input
 
+    def select_difficulty(self):
+        difficulty = input("enter your difficulty, 'easy' or hard': ")
+        difficulty = difficulty.lower()
+
+        if difficulty != 'easy' and difficulty != 'hard':
+            difficulty = "please select easy or hard"
+        return difficulty
+
     def main(self):
         welcome_message = f"""
 Welcome to Mastermind, the codebreaking game!
@@ -44,6 +63,10 @@ Each number can be between {self.game.min} and {self.game.max} inclusive.
 Enter 'quit' to exit out of the game.
 Good Luck!
 """
+
+        # difficulty = self.select_difficulty()
+        # self.game = Game(difficulty[difficulty]['min'])
+
         while self.game.player_win == False and self.game.player_lose == False:
             print(welcome_message)
             self.display_feedback()
